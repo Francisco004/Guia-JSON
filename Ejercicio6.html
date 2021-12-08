@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const xhr = new XMLHttpRequest();
+
+        xhr.onload = function()
+        {
+            if(this.status === 200)
+            {
+                try{
+                    const obj = JSON.parse(this.responseText);
+
+                    alert(obj.Nombre);
+                    alert(obj.CodigoDeBarras);
+                    alert(obj.Precio);
+                    console.log(obj);
+                }
+                catch (e)
+                {
+                    console.warn("Hay un error en el json");
+                }
+            }else
+            {
+                console.warn('No se recibio 200 OK')
+            }
+        }
+
+        xhr.open("get", "./Ejercicio6.php");
+        xhr.send();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
